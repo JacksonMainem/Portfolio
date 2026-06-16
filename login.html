@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In · Jordan Cruz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-shell">
+
+  <!-- STATUS BAR -->
+  <header class="status-bar">
+    <div class="status-bar__left">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-bar__label">portfolio::session</span>
+    </div>
+    <div class="status-bar__right">
+      <span class="status-date mono" id="statusDate"></span>
+      <span class="status-clock" id="statusTime"></span>
+    </div>
+  </header>
+
+  <main class="login-main">
+
+    <!-- LEFT: PITCH -->
+    <section class="login-pitch">
+      <span class="login-pitch__eyebrow">Private access</span>
+      <h1>Sign in to view<br><span>Jordan's</span> work.</h1>
+      <p>
+        This portfolio sits behind a simple sign-in so visitors land somewhere
+        deliberate. Use the demo credentials below — there's no real account
+        system here, just client-side validation doing its job.
+      </p>
+
+      <div class="login-ticks">
+        <div><b>3</b>projects</div>
+        <div><b>8+</b>tools</div>
+        <div><b id="liveYear"></b>year</div>
+      </div>
+    </section>
+
+    <!-- RIGHT: FORM -->
+    <section class="login-card">
+      <h2>Sign in</h2>
+      <p class="login-card__sub">Enter the demo credentials to continue.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" autocomplete="username" placeholder="student@gmail.com" inputmode="email">
+          <div class="field-error" id="emailError"></div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" placeholder="••••••••••">
+          <ul class="pw-rules" id="pwRules">
+            <li data-rule="length">8+ characters</li>
+            <li data-rule="upper">One uppercase letter</li>
+            <li data-rule="number">One number</li>
+          </ul>
+          <div class="field-error" id="passwordError"></div>
+        </div>
+
+        <div class="form-banner" id="formBanner"></div>
+
+        <button type="submit" class="btn-primary">Sign in</button>
+      </form>
+
+      <div class="login-hint">
+        Demo email: <code>student@gmail.com</code><br>
+        Demo password: <code>Student123</code>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="clock.js"></script>
+<script src="login.js"></script>
+</body>
+</html>
