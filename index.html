@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Cruz · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<header class="status-bar">
+  <div class="status-bar__left">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span class="status-bar__label">portfolio::session active</span>
+  </div>
+  <div class="status-bar__right">
+    <span class="status-bar__user mono" id="userEmailDisplay"></span>
+    <span class="status-date mono" id="statusDate"></span>
+    <span class="status-clock" id="statusTime"></span>
+    <button class="btn-logout" id="logoutBtn" type="button">Sign out</button>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav__brand" href="#top">Jordan<span>.</span></a>
+  <div class="nav__links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile">Menu</button>
+</nav>
+<div class="nav__mobile" id="navMobile">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <p class="hero__greeting" id="heroGreeting">Good afternoon, you're looking at —</p>
+      <h1>Jordan Cruz<span>.</span></h1>
+      <p class="hero__role">Computer Science student · front-end leaning generalist</p>
+      <p class="hero__bio">
+        I build small, functional things — class projects, weekend tools,
+        the occasional over-engineered to-do app. This site doubles as one
+        of those things: the login you just used and the demo below are
+        both live code, not screenshots.
+      </p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--accent">View projects</a>
+        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero__card mono">
+      <div class="hero__card-label">Local time</div>
+      <div class="hero__card-time" id="heroTime"></div>
+      <div class="hero__card-date" id="heroDate"></div>
+      <div class="hero__card-divider"></div>
+      <div class="hero__card-stat"><span>Status</span><b>Available for internships</b></div>
+      <div class="hero__card-stat"><span>Based in</span><b>Manila, PH</b></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <span class="eyebrow">About</span>
+    <h2 class="title">Still early, still building.</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm a Computer Science student who learns best by shipping small,
+          finished things instead of half-starting big ones. Most of what's
+          on this page came out of coursework or "I wonder if I can build
+          that" weekends — the time-clock widget below started as a
+          regex exercise and turned into something I actually use to track
+          study sessions.
+        </p>
+        <p>
+          Outside of code, I'm usually the one organizing the group project
+          timeline, which is probably why a working clock ended up on my
+          portfolio.
+        </p>
+      </div>
+      <ul class="facts">
+        <li><span>Studying</span><span>B.S. Computer Science</span></li>
+        <li><span>Year</span><span>3rd year</span></li>
+        <li><span>Focus</span><span>Web dev &amp; UI</span></li>
+        <li><span>Looking for</span><span>Internships, 2026</span></li>
+        <li><span>Location</span><span>Manila, Philippines</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section--tight" id="skills">
+    <span class="eyebrow">Skills</span>
+    <h2 class="title">What I reach for.</h2>
+    <div class="skill-groups" style="margin-top: 36px;">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">HTML &amp; CSS</span>
+          <span class="skill-tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git &amp; GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Currently learning</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Accessibility</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <span class="eyebrow">Projects</span>
+    <h2 class="title">A few things I've built.</h2>
+    <div class="project-grid" style="margin-top: 36px;">
+
+      <div class="project-card project-card--featured">
+        <span class="project-card__tag">Live demo · this site</span>
+        <h3>Shift Tracker</h3>
+        <p>
+          A small time-clock app: clock in, clock out, and it logs the
+          session with a timestamp and duration. Built to actually use
+          for tracking study blocks, not just to look nice.
+        </p>
+        <div class="project-card__stack">
+          <span>JavaScript</span><span>Date API</span><span>DOM</span>
+        </div>
+        <button class="project-card__link" id="openClockModal">Launch demo →</button>
+      </div>
+
+      <div class="project-card">
+        <span class="project-card__tag">School project</span>
+        <h3>Campus Event Tracker</h3>
+        <p>
+          A simple board for posting and filtering campus events by date
+          and organization, built for a web dev class assignment.
+        </p>
+        <div class="project-card__stack">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a class="project-card__link" href="#">View project →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-card__tag">Personal</span>
+        <h3>Budget Buddy</h3>
+        <p>
+          A lightweight expense logger with category totals, made because
+          every budgeting app I tried felt heavier than I needed.
+        </p>
+        <div class="project-card__stack">
+          <span>JavaScript</span><span>localStorage</span>
+        </div>
+        <a class="project-card__link" href="#">View project →</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-card__tag">Practice</span>
+        <h3>Weather Now</h3>
+        <p>
+          A one-page weather lookup built while learning to work with
+          public APIs and handle loading/error states gracefully.
+        </p>
+        <div class="project-card__stack">
+          <span>JavaScript</span><span>Fetch API</span>
+        </div>
+        <a class="project-card__link" href="#">View project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="eyebrow">Contact</span>
+        <h2 class="title">Say hello.</h2>
+        <p>
+          Open to internships, group project collaborators, or just
+          talking shop about a clean way to validate a form. The message
+          form is front-end only, so it won't actually send — but the
+          validation is real.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:jordan.cruz@example.com">jordan.cruz@example.com</a>
+          <a href="#">github.com/jordancruz</a>
+          <a href="#">linkedin.com/in/jordancruz</a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="cName">Name</label>
+          <input type="text" id="cName" placeholder="Your name">
+          <div class="field-error" id="cNameError"></div>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input type="text" id="cEmail" placeholder="you@example.com">
+          <div class="field-error" id="cEmailError"></div>
+        </div>
+        <div class="field">
+          <label for="cMessage">Message</label>
+          <input type="text" id="cMessage" placeholder="What's on your mind?">
+          <div class="field-error" id="cMessageError"></div>
+        </div>
+        <div class="form-banner" id="contactBanner"></div>
+        <button type="submit" class="btn-primary">Send message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  Built with HTML, CSS &amp; JavaScript · <span id="footerYear"></span>
+</footer>
+
+<!-- SHIFT TRACKER MODAL (time clock demo) -->
+<div class="modal-overlay" id="clockModalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="clockModalTitle">
+    <div class="modal__head">
+      <div>
+        <h3 id="clockModalTitle">Shift Tracker</h3>
+        <p>Clock in, clock out, see the session logged below.</p>
+      </div>
+      <button class="modal__close" id="closeClockModal" aria-label="Close">✕</button>
+    </div>
+
+    <div class="clock-display">
+      <div class="clock-display__time mono" id="modalClockTime"></div>
+      <div class="clock-display__status" id="modalClockStatus">Not clocked in</div>
+    </div>
+
+    <div class="clock-actions">
+      <button id="clockInBtn" type="button">Clock in</button>
+      <button id="clockOutBtn" type="button" disabled>Clock out</button>
+    </div>
+
+    <div class="clock-log">
+      <h4>Session log</h4>
+      <div id="clockLogEmpty" class="clock-log__empty">No sessions yet — clock in to start one.</div>
+      <table id="clockLogTable" style="display:none;">
+        <thead>
+          <tr><th>#</th><th>In</th><th>Out</th><th>Duration</th></tr>
+        </thead>
+        <tbody id="clockLogBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="clock.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
