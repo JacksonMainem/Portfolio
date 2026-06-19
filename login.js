@@ -8,27 +8,29 @@
  */
 
 // ---- Regex patterns -------------------------------------------------
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PW_LENGTH_REGEX = /.{8,}/;
 const PW_UPPER_REGEX = /[A-Z]/;
 const PW_NUMBER_REGEX = /[0-9]/;
 
-// Demo account — swap for whatever you want people to type in.
-const DEMO_EMAIL = "demo@student.dev";
+// Demo account — username must be Student.
+const DEMO_USERNAME = "Student";
 const DEMO_PASSWORD = "Student123";
 
 // ---- Elements ---------------------------------------------------------
 const form = document.getElementById("loginForm");
-const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
-const emailError = document.getElementById("emailError");
+const usernameError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const formBanner = document.getElementById("formBanner");
 const pwRules = document.querySelectorAll("#pwRules li");
 
 // ---- Live clock + footer year -----------------------------------------
 startStatusClock("statusTime", "statusDate");
-document.getElementById("liveYear").textContent = new Date().getFullYear();
+const liveYearEl = document.getElementById("liveYear");
+if (liveYearEl) {
+  liveYearEl.textContent = new Date().getFullYear();
+}
 
 // If already signed in this session, skip straight to the portfolio.
 if (sessionStorage.getItem("isLoggedIn") === "true") {
@@ -36,13 +38,13 @@ if (sessionStorage.getItem("isLoggedIn") === "true") {
 }
 
 // ---- Validation helpers -------------------------------------------------
-function validateEmail(showError) {
-  const value = emailInput.value.trim();
-  const valid = EMAIL_REGEX.test(value);
+function validateUsername(showError) {
+  const value = usernameInput.value.trim();
+  const valid = value.toLowerCase() === DEMO_USERNAME.toLowerCase();
 
-  emailInput.classList.toggle("is-valid", valid && value.length > 0);
-  emailInput.classList.toggle("is-invalid", showError && !valid);
-  emailError.textContent = showError && !valid ? "Enter a valid email address (e.g. name@example.com)." : "";
+  usernameInput.classList.toggle("is-valid", valid && value.length > 0);
+  usernameInput.classList.toggle("is-invalid", showError && !valid);
+  usernameError.textContent = showError && !valid ? "Username must be Student." : "";
 
   return valid;
 }
@@ -80,8 +82,8 @@ function hideBanner() {
 }
 
 // ---- Live validation while typing (no error text until they leave the field) ----
-emailInput.addEventListener("input", () => validateEmail(false));
-emailInput.addEventListener("blur", () => validateEmail(true));
+usernameInput.addEventListener("input", () => validateUsername(false));
+usernameInput.addEventListener("blur", () => validateUsername(true));
 
 passwordInput.addEventListener("input", () => validatePassword(false));
 passwordInput.addEventListener("blur", () => validatePassword(true));
@@ -91,28 +93,27 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   hideBanner();
 
-  const emailValid = validateEmail(true);
+  const usernameValid = validateUsername(true);
   const passwordValid = validatePassword(true);
 
-  if (!emailValid || !passwordValid) {
+  if (!usernameValid || !passwordValid) {
     showBanner("Fix the highlighted fields before signing in.", "error");
     return;
   }
 
-  const email = emailInput.value.trim();
+  const username = usernameInput.value.trim();
   const password = passwordInput.value;
 
-  const isMatch =
-    email.toLowerCase() === DEMO_EMAIL.toLowerCase() && password === DEMO_PASSWORD;
+  const isMatch = username === DEMO_USERNAME && password === DEMO_PASSWORD;
 
   if (!isMatch) {
-    showBanner("That email and password combination isn't recognized. Try the demo credentials below.", "error");
+    showBanner("That username and password combination isn't recognized. Try the demo credentials below.", "error");
     return;
   }
 
   showBanner("Signed in. Redirecting…", "success");
   sessionStorage.setItem("isLoggedIn", "true");
-  sessionStorage.setItem("userEmail", email);
+  sessionStorage.setItem("username", username);
 
   setTimeout(() => {
     window.location.href = "index.html";
