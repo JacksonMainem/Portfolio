@@ -59,25 +59,33 @@ let activeClockIn = null; // Date when the current session started
 let sessionCount = 0;
 
 function tickModalClock() {
-  modalTime.textContent = new Date().toLocaleTimeString();
+  if (modalTime) modalTime.textContent = new Date().toLocaleTimeString();
 }
-tickModalClock();
-setInterval(tickModalClock, 1000);
+if (modalTime) {
+  tickModalClock();
+  setInterval(tickModalClock, 1000);
+}
 
 function openModal() {
-  overlay.classList.add("open");
+  if (overlay) overlay.classList.add("open");
 }
 function closeModal() {
-  overlay.classList.remove("open");
+  if (overlay) overlay.classList.remove("open");
 }
 
-openBtn.addEventListener("click", openModal);
-closeBtn.addEventListener("click", closeModal);
-overlay.addEventListener("click", (e) => {
-  if (e.target === overlay) closeModal();
-});
+if (openBtn) {
+  openBtn.addEventListener("click", openModal);
+}
+if (closeBtn) {
+  closeBtn.addEventListener("click", closeModal);
+}
+if (overlay) {
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeModal();
+  });
+}
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && overlay.classList.contains("open")) closeModal();
+  if (e.key === "Escape" && overlay && overlay.classList.contains("open")) closeModal();
 });
 
 function formatDuration(ms) {
@@ -157,9 +165,8 @@ contactForm.addEventListener("submit", (e) => {
     return;
   }
 
-  contactBanner.textContent = "Message validated! (This demo doesn't actually send — wire it up to a backend or form service to go live.)";
+  contactBanner.textContent = "Message validated!";
   contactBanner.className = "form-banner show success";
   contactForm.reset();
   [cName, cEmail, cMessage].forEach((el) => el.classList.remove("is-valid", "is-invalid"));
 });
-
